@@ -61,18 +61,6 @@ class LoginPage extends React.Component {
 		}
 	};
 
-    componentDidMount() {
-        console.log("mounted!");
-        console.log(this);
-        console.log(this.state);
-        console.log(this.props);
-        console.log(this.props.login.isLogged);
-        if (this.props.login
-			&& this.props.login.isLogged !== undefined
-			&& this.props.login.isLogged)
-            	this.props.history.push('/');
-    }
-
 	render() {
 		const { username, password, submitted } = this.state;
 		return (

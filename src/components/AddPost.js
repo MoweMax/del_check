@@ -23,8 +23,7 @@ class AddPost extends React.Component {
 
 	state = {
 		post: this.props.post,
-		submitted: this.props.submitted,
-        selectedFile: null
+		submitted: this.props.submitted
 	};
 
 
@@ -50,16 +49,6 @@ class AddPost extends React.Component {
 		}
 	};
 
-    fileChangedHandler = (event) => {
-        const file = event.target.files[0];
-        console.log(file);
-        this.setState({selectedFile: event.target.files[0]})
-    };
-
-    uploadHandler = () => {
-        console.log(this.state.selectedFile)
-    };
-
 	render() {
 		const { post, submitted } = this.state;
 		return (
@@ -83,17 +72,11 @@ class AddPost extends React.Component {
 							<label htmlFor="Title">Image url:</label>
 							<input type="text" className="form-control" name="img_url" value={post.img_url} onChange={this.handleChange} />
 						</div>
-                        <div className={'form-group'}>
-                            <label htmlFor="Title">Image file:</label>
-                        	<input type="file" onChange={this.fileChangedHandler} />
-                            <button onClick={this.uploadHandler}>Upload!</button>
-                        </div>
 						<div className={'form-group'}>
 							<Editor
-                                className={'form-group'}
 								id="tinyMCE-1"
 								name="content"
-                                initialValue={post.content}
+								value={post.content}
 								init={{
 									inline: true,
 									plugins: 'link image code',
